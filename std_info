@@ -1,0 +1,44 @@
+def record():
+    std={}
+    id=0
+    while True:
+        print("______________________________")
+        print("______________________________")
+        print(Menu)
+        print("______________________________")
+        print("______________________________")
+        choice=int(input("Enter a choice: "))
+        if choice==1:
+            id+=1
+            print("Add student")
+            name=input("Enter a name: ")
+            std[id]=name
+            with open("std.csv","a") as file:
+                file.write(f"{id}:{name}\n")
+            print("______________________________")
+        elif choice==2:
+            delete=input("Enter the name of student you wanna delete: ")
+            for key,val in std.items():
+                if val.lower()==delete.lower():
+                    del std[key]
+                    print("After deletion dictonary looks like: ")
+                    print(std)
+                    std = {i+1: v for i, v in enumerate(std.values())}
+
+                    print("______________________________")
+                    break
+                
+        elif choice == 3:
+            for key, value in std.items():
+                print(f"{key}: {value}")
+                print("______________________________")
+        elif choice==4:
+            print("Thanks for visiting")
+            print("______________________________")
+            break
+        else:
+            print("Enter correct value")
+            print("______________________________")
+
+record()
+    
